@@ -1,0 +1,45 @@
+Request(GET):
+Operation: Load all items
+/inventory/items
+
+Operation: Load filtered items
+Filters: category, labels
+/inventory/items?category=BEDSHEET&labels=red,flower
+
+Response:
+{
+	"items": [
+		{
+			"id": 13425364,
+			"name": "Red Flower Bedsheet",
+			"category": "BEDSHEET",
+			"picture": "https://linktopicture.png",
+			"timeCreated": "2019-03-22 08:26:48",
+			"labels": [
+				"red", "flower", "bedsheet"
+			],
+			"active": true,
+			"addedBy": {
+				"id": 837286,
+				"fullName": "Sunita Singh"
+			},
+			"availableUnits": 124
+		},
+		{
+			"id": 13425365,
+			"name": "Green Apron",
+			"category": "APRON",
+			"picture": "https://linktopicture.png",
+			"timeCreated": "2019-03-22 08:26:48",
+			"labels": [
+				"apron", "green"
+			],
+			"active": true,
+			"addedBy": {
+				"id": 837286,
+				"fullName": "Sunita Singh"
+			},
+			"availableUnits": 21
+		}
+	]
+}

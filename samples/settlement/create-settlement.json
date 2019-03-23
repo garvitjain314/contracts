@@ -1,0 +1,19 @@
+Operation: Post a new settlement
+Request(POST):
+/centres/1/settlements
+
+{
+	"centreId": 1,
+	"time": "2019-03-22 08:26:48",
+	"amountBefore": 1300.00,
+	"amount": -1299.00,
+	"amountAfter": "1.00",
+	"settledBy": {
+		"id": 1
+	},
+	"counterparty": {
+		"id": 999
+	},
+	"correction": false,
+	"notes": "settled for last 1 month. 1 Re still pending."
+}

@@ -1,0 +1,62 @@
+Request(GET):
+/inventory/items/1234/history
+
+
+{
+	"itemUpdateHistory": [
+		{
+			"id": 876857425,
+			"timeCreated": "2019-01-11 12:10:59",
+			"centreId": 1,
+			"itemId": 1234,
+			"activityId": null,	//default=null for now. Will be non-null once it is integrated with an invoicing system. This can be stock_transfer_id or invoice_id and will be foreign key to corresponding tables.
+			"type": 102,	//values: 101=ADD, 102=REMOVE
+			"reason": 1001,	//values: (+stock_new / +stock_transfer_reversal / -sale / -stock_transfer / +-other)
+			"actorFullName": "Sunita Singh",	//default=null for now
+			"units": 5,
+			"actualUnitSalePrice": 500,	//sale price of a unit. For all {type,reason} not in {REMOVE,SALE}, this will be 0
+			"totalAmount": 2500,	//total amount obtained from this change in inventory. 5 items sold at 500 each = 2500
+			"notes": "Mrs. Jains phn number 9182736455"
+		},
+		{
+			"id": 876857427,
+			"timeCreated": "2019-02-09 17:19:57",
+			"centreId": 1,
+			"itemId": 1234,
+			"activityId": null,
+			"type": 101,	//values: 101=ADD, 102=REMOVE
+			"reason": 1001,	//stock_new
+			"actorFullName": null,
+			"units": 8,
+			"notes": "corrected last entry"
+		},
+		{	
+			//this activity was created but was later deleted. A new correction_add activity was then created in place of this.
+			"id": 876857426,
+			"timeCreated": "2019-02-09 17:18:36",
+			"centreId": 1,
+			"itemId": 1234,
+			"activityId": null,
+			"type": 101,	//values: 101=ADD, 102=REMOVE
+			"reason": 1001,	//+stock_new
+			"actorFullName": null,
+			"units": 8,
+			"notes": "purses made by Rani",
+			"deleted": true
+		},
+		{
+			"id": 876857210,
+			"timeCreated": "2019-01-17 08:10:59",
+			"centreId": 1,
+			"itemId": 1234,
+			"activityId": null,
+			"type": 102,	//values: 101=ADD, 102=REMOVE
+			"reason": 1001,	//-stock_transfer
+			"actorFullName": null,
+			"units": 20,
+			"actualUnitSalePrice": 0,	//stock transfers do not have a sale price. It is only a transfer of stock to a store. This entry serves as a record of that. 
+			"totalAmount": 0,
+			"notes": "Aprons given to Mehta Cloth Centre for 1 month."	//in future we can add a screen to allow reversal of a transfered stock.
+		}
+	]
+}

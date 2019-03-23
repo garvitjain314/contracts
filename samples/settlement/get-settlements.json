@@ -1,0 +1,65 @@
+Operation: Get all settlements
+Request(GET):
+/centres/1/settlements
+
+{
+	"settlements": [
+		{
+			"id": 13243,
+			"centreId": 1,
+			"time": "2019-03-22 08:26:48",
+			"amountBefore": 1300.00,
+			"amount": -1299.00,
+			"amountAfter": "1.00",
+			"settledBy": {
+				"id": 1,
+				"fullName": "Anita Jain"
+			},
+			"counterparty": {
+				"id": 999,
+				"fullName": "Ramesh Yadav"	
+			},
+			"correction": false,
+			"notes": "settled for last 1 month. 1 Re still pending."
+
+		},
+		{
+			"id": 13243,
+			"centreId": 1,
+			"time": "2019-03-22 08:26:48",
+			"amountBefore": 1000.00,
+			"amount": 300.00,
+			"amountAfter": "1300.00",
+			"settledBy": {
+				"id": 1,
+				"fullName": "Anita Jain"
+			},
+			"counterparty": {
+				"id": 999,
+				"fullName": "Ramesh Yadav"	
+			},
+			"correction": true,
+			"notes": "last payment should have been for 2700 but was made for 3000. So reversing 300. note: whenever correction=true, amount carries negative sign."
+
+		},
+		{
+			"id": 13240,
+			"centreId": 1,
+			"time": "2019-03-20 08:26:48",
+			"amountBefore": 4000.00,
+			"amount": -3000.00,
+			"amountAfter": "1000.00",
+			"settledBy": {
+				"id": 1,
+				"fullName": "Anita Jain"
+			},
+			"counterparty": {
+				"id": 999,
+				"fullName": "Ramesh Yadav"	
+			},
+			"correction": false,
+			"notes": "Paid 3000 to Ramesh ji. pending 1000."
+
+		}
+	]
+}

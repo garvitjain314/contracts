@@ -1,0 +1,24 @@
+Operation: Post an entry to the history of an item.
+Request(POST):
+/inventory/items/1234/history
+
+{
+	"timeCreated": "2019-01-11 12:10:59",
+	"centreId": 1,
+	"itemId": 1234,
+	"activityId": null,	//default=null for now. Will be non-null once it is integrated with an invoicing system. This can be stock_transfer_id or invoice_id and will be foreign key to corresponding tables.
+	"type": 102,	//values: 101=ADD, 102=REMOVE
+	"reason": 1001,	//values: (+stock_new / +stock_transfer_reversal / -sale / -stock_transfer / +-other)
+	"actorFullName": "Sunita Singh",	//default=null for now
+	"units": 5,
+	"actualUnitSalePrice": 500,	//sale price of a unit. For all {type,reason} not in {REMOVE,SALE}, this will be 0
+	"totalAmount": 2500,	//total amount obtained from this change in inventory. 5 items sold at 500 each = 2500
+	"notes": "Mrs. Jains phn number 9182736455"
+}
+
+
+
+
+Operation: Delete an entry from the history of an item.
+Request(DELETE):
+/inventory/items/1234/history/876857425
